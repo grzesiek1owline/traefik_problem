@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  traefik:
+    image: traefik:v2.0
+    command: --api.insecure=true --providers.docker
+    networks:
+    - threnton
+    - sportsmed
+    - talenti
+    - joggas
+    - sustain
+    - element2
+    - lightmarlin
+    - fred
+    ports:
+    - '80:80'
+    - '8080:8080'
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  restart: always
+
+networks:
+  threnton:
+    external:
+      name: threnton_default
+  sportsmed:
+    external:
+      name: sportsmed_default
+  talenti:
+    external:
+      name: talenti_default
+  joggas:
+    external:
+      name: joggas_default
+  sustain:
+    external:
+      name: sustainabilityguide_default
+  element2:
+    external:
+      name: element2_default
+  lightmarlin:
+    external:
+      name: lightmarlin_default
+  fred:
+    external:
+      name: fred_default
